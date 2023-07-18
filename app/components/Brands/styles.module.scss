@@ -1,0 +1,181 @@
+@import "../../scss/vars.scss";
+
+.brands {
+  padding-top: 2em;
+  padding-bottom: 40px;
+}
+
+.brandsGrid {
+  display: grid;
+  overflow-x: hidden;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px 30px;
+  padding-bottom: 60px;
+  @media #{$brands_break} {
+    // grid-template-columns: repeat(1, 1fr);
+    // for gallery
+    display: flex;
+  }
+}
+
+.brandsCard {
+  $b: ".brandsCard";
+  @extend .bsh1;
+  background: #ccc;
+  border-radius: 25px;
+  position: relative;
+  box-sizing: content-box;
+  overflow-y: hidden;
+  display: grid;
+  padding: 40px 0 90px;
+  grid-template-columns: (100-(340/570 * 100%)) auto;
+  @media #{$brands_break} {
+    display: block;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+  }
+  &.amelie {
+    background: linear-gradient(180deg, #fcfdff 21.88%, #e6f1ff 100%);
+    &::before {
+      background-image: url("#{$basePath}/cssimg/brands/backs/amelie.png");
+    }
+  }
+  &.hutorok {
+    background: linear-gradient(
+      180deg,
+      #eff7fd 0%,
+      #fff8c6 63.84%,
+      #fffef4 100%
+    );
+    &::before {
+      background-image: url("#{$basePath}/cssimg/brands/backs/hutorok.png");
+    }
+  }
+  &.leto {
+    background: linear-gradient(180deg, #fffcf9 0%, #ffecf0 100%);
+    &::before {
+      background-image: url("#{$basePath}/cssimg/brands/backs/leto.png");
+    }
+  }
+  &.moreslav {
+    background: linear-gradient(180deg, #f8fcff 0%, #f0f7ff 100%);
+    &::before {
+      background-image: url("#{$basePath}/cssimg/brands/backs/moreslav.png");
+    }
+  }
+  &__logo {
+    text-align: center;
+    box-sizing: border-box;
+    text-align: right;
+    padding: 0 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @media #{$mobile} {
+      justify-content: center;
+    }
+    span {
+      // logo itself
+      display: inline-block;
+      width: 100%;
+      position: relative;
+      height: 0;
+      background-position: 0 0;
+      background-repeat: no-repeat;
+      background-size: contain;
+      @media #{$brands_break} {
+      }
+      #{$b}.amelie & {
+        max-width: 178px;
+        padding-bottom: (119/178 * 100%);
+        background-image: url("#{$basePath}/cssimg/brands/amelie.png");
+        @media #{$brands_break} {
+          width: 178px;
+          height: 119px;
+          padding-bottom: 0;
+        }
+      }
+      #{$b}.hutorok & {
+        max-width: 182px;
+        padding-bottom: (91/182 * 100%);
+        background-image: url("#{$basePath}/cssimg/brands/hutorok.png");
+        @media #{$brands_break} {
+          width: 182px;
+          height: 91px;
+          padding-bottom: 0;
+        }
+      }
+      #{$b}.leto & {
+        max-width: 138px;
+        padding-bottom: (138/138 * 100%);
+        background-image: url("#{$basePath}/cssimg/brands/leto.png");
+        @media #{$brands_break} {
+          width: 138px;
+          height: 138px;
+          padding-bottom: 0;
+        }
+      }
+      #{$b}.moreslav & {
+        max-width: 158px;
+        padding-bottom: (147/158 * 100%);
+        background-image: url("#{$basePath}/cssimg/brands/moreslav.png");
+        @media #{$brands_break} {
+          width: 158px;
+          height: 147px;
+          padding-bottom: 0;
+        }
+      }
+    }
+  }
+  &__text {
+    $lh: (25/14);
+    box-sizing: border-box;
+    padding-right: 40px;
+    font-size: 14px;
+    line-height: $lh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    br {
+      line-height: 0;
+      display: none;
+    }
+    b {
+      display: block;
+      padding-bottom: 0.5em;
+    }
+    //
+    #{$b}.amelie & {
+      color: #401e1f;
+    }
+    #{$b}.hutorok & {
+      color: #007f38;
+    }
+    #{$b}.leto & {
+      color: #502b1b;
+    }
+    #{$b}.moreslav & {
+      color: #073e68;
+    }
+    @media #{$brands_break} {
+      padding-left: 2em;
+    }
+  }
+}
+
+.swiperSlide {
+  height: auto !important;
+  text-align: center;
+  display: flex !important;
+  padding-bottom: 50px;
+}

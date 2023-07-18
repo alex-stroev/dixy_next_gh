@@ -1,0 +1,144 @@
+@import "../../scss/vars.scss";
+
+.banners {
+  background: #fff;
+  padding: 128px 0;
+}
+
+.bannersGrid {
+  $gap: 30px;
+  @extend .gridCont;
+  margin-left: -$gap;
+  &__item {
+    @extend .gridItem;
+    padding-left: $gap;
+    padding-bottom: 26px;
+    width: (100%/3);
+    @media #{$mobile} {
+      width: (100%/1);
+    }
+  }
+}
+
+.bannersCard {
+  $b: ".bannersCard";
+  font-size: 20px;
+  @media #{$tablet} {
+    font-size: 16px;
+  }
+  @media #{$mobile} {
+    font-size: 20px;
+  }
+  @media #{$tiny} {
+    font-size: 18px;
+  }
+  position: relative;
+  box-sizing: content-box;
+  height: 0;
+  padding-bottom: (509/370 * 100%);
+  border-radius: 25px;
+  background: #ccc;
+  @extend .bsh1;
+
+  &_banner1 {
+    // background: linear-gradient(180deg, #ff9e38 0%, #ff8200 100%);
+    background: url("#{$basePath}/cssimg/banners/1.png") 0 0 no-repeat;
+    background-size: cover;
+    &__content {
+      //
+    }
+  }
+  &_banner2 {
+    // background: #e6e6e6;
+    background: url("#{$basePath}/cssimg/banners/2.png") 0 0 no-repeat;
+    background-size: cover;
+  }
+  &_banner3 {
+    // background: linear-gradient(180deg, #c4c4c4 0%, #c4c4c4 61.58%, rgba(196, 196, 196, 40%) 71.29%);
+    background: url("#{$basePath}/cssimg/banners/3.png") 0 0 no-repeat;
+    background-size: cover;
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    justify-content: flex-end;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    #{$b}_banner1 & {
+      justify-content: space-between;
+    }
+  }
+  &__text {
+    @include fluid_typo(1230, 36, 768, 32);
+    @include fluid_typo_auto(767, 36, 18);
+    padding: 1.5rem;
+    //
+    font-weight: bold;
+    font-size: (36em/20);
+    line-height: (41/36);
+    letter-spacing: -0.05em;
+    color: #fff;
+    text-shadow: 0 1px 0 rgba(95, 40, 0, 0.25);
+    #{$b}_banner2 & {
+      color: $green;
+      text-shadow: none;
+    }
+    #{$b}_banner3 & {
+      font-size: 30px;
+      line-height: (34/30);
+    }
+  }
+  &__control {
+    padding: 0 1.5rem 1.5rem;
+  }
+}
+
+//////////////////////////////////////////////////////////////////////////////
+// appLinks
+//////////////////////////////////////////////////////////////////////////////
+.appsIcons {
+  display: flex;
+  justify-content: space-between;
+  $aw: 338; // ширина кнопки Appstore
+  $gw: 407; // ширина кнопки ширина кнопки Googleplay
+  $ew: 50; // относительная ширина зазора
+  $bh: 120; // высота кнопок кнопки
+  $sumw: ($aw + $gw + $ew);
+  a {
+    display: block;
+    box-sizing: content-box;
+    height: 0;
+    text-indent: -9999px;
+  }
+  &__cell {
+    &_iApp {
+      width: ($aw/$sumw * 100%);
+      a {
+        padding-bottom: ($bh/$aw * 100%);
+        background: url("#{$basePath}/cssimg/apps/appstore.png") 0 0 no-repeat;
+        background-size: cover;
+      }
+    }
+    &_iGap {
+      width: ($ew/$sumw * 100%);
+    }
+    &_iGplay {
+      width: ($gw/$sumw * 100%);
+      a {
+        padding-bottom: ($bh/$gw * 100%);
+        background: url("#{$basePath}/cssimg/apps/playstore.png") 0 0 no-repeat;
+        background-size: cover;
+      }
+    }
+  }
+}
+
+.button {
+  white-space: nowrap;
+  @include fluid_typo(1200, 18, 768, 20);
+  @include fluid_typo(425, 20, 360, 16);
+}

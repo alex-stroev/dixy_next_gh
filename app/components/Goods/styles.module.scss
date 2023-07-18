@@ -1,0 +1,385 @@
+@import "../../scss/vars.scss";
+
+//////////////////////////////////////////////////////////////////////////////
+// Наши товары
+//////////////////////////////////////////////////////////////////////////////
+.ourGoods {
+  $toggle: $mobile;
+  padding: 80px 0;
+  position: relative;
+  &__button {
+    text-align: center;
+    padding-top: 2em;
+  }
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    @media #{$toggle} {
+      flex-wrap: wrap;
+    }
+  }
+  &__h1 {
+    text-align: left;
+    padding-right: 1em;
+    @media #{$toggle} {
+      display: block;
+      width: 100%;
+      padding-bottom: 1em;
+    }
+  }
+  &__filters {
+    position: static; // ВАЖНО!
+    @media #{$toggle} {
+      display: block;
+      text-align: center;
+      width: 100%;
+    }
+  }
+  &__loader {
+    text-align: center;
+    padding: 2em;
+    img {
+      width: 5vw;
+    }
+  }
+}
+
+.ourGoodsGrid {
+  padding-top: (56em/16);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 26px 30px;
+  @media #{$tablet} {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media #{$mobile} {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px 16px;
+  }
+  @media #{$tiny} {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.ourGoodsCard {
+  $toggle: $tiny;
+  background: #fff;
+  border-radius: 25px;
+  padding: 1em;
+  position: relative;
+  @extend .bsh1;
+  @media #{$toggle} {
+    padding: 10px;
+  }
+  &__sticker {
+    position: absolute;
+    z-index: 2;
+    top: (27em/16);
+    left: (20em/16);
+    max-width: 30%;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size: contain;
+    &.amelie {
+      width: (172px/2);
+      height: (103px/2);
+      background-image: url("#{$basePath}/cssimg/stickers/amelie.png");
+    }
+    &.hutorok {
+      width: (176px/2);
+      height: (105px/2);
+      background-image: url("#{$basePath}/cssimg/stickers/hutorok.png");
+    }
+    &.leto {
+      width: (135px/2);
+      height: (135px/2);
+      background-image: url("#{$basePath}/cssimg/stickers/leto.png");
+    }
+    &.moreslav {
+      width: (144px/2);
+      height: (137px/2);
+      background-image: url("#{$basePath}/cssimg/stickers/moreslav.png");
+    }
+  }
+  &__pic {
+    @extend .centerPic;
+    margin-top: 1em;
+  }
+  &__text {
+    color: #000;
+    text-transform: lowercase;
+    text-transform: capitalize;
+    $lh: (30/18);
+    font-size: 18px;
+    line-height: $lh;
+    font-weight: 400;
+    text-align: center;
+    margin: 1em 0;
+    @media #{$toggle} {
+      $lh: (18/13);
+      font-size: 13px;
+      line-height: $lh;
+    }
+    @media #{$tiny} {
+      font-size: 16px;
+    }
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  ///////////////////////////////////////////////////////
+  //    TEST STAFF
+  ///////////////////////////////////////////////////////
+  // &::before {
+  //     content: "";
+  //     position: absolute;
+  //     top: 1em;
+  //     right: 1em;
+  //     display: inline-block;
+  //     padding: 2px 8px;
+  //     transform: rotate(-15deg);
+  //     z-index: 2;
+  // }
+  // &.test_grocery {
+  //     &::before {
+  //         content: "Бакалея";
+  //         background: teal;
+  //         color: #fff;
+  //     }
+  // }
+  // &.test_fresh {
+  //     &::before {
+  //         content: "Фреш";
+  //         background: #b00;
+  //         color: #fff;
+  //     }
+  // }
+}
+
+///////////////////////////////////////////////////////
+//    Filters button
+///////////////////////////////////////////////////////
+.toggleFilters {
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: $green;
+  border: 3px solid $green;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 9px rgba(120, 190, 32, 0.25);
+  border-radius: 30px;
+  padding: (17em/20) 2em;
+  position: relative;
+  &::before,
+  &::after {
+    font-size: (23em/20);
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    content: "";
+    position: relative;
+    top: (6em/23);
+    margin: 0 (10em/23);
+  }
+  &::before {
+    background: url("#{$basePath}/cssimg/goods/filter.svg");
+    background-size: contain;
+  }
+}
+
+///////////////////////////////////////////////////////
+//    Filters
+///////////////////////////////////////////////////////
+.filtersContainer {
+  position: relative;
+}
+
+.filters {
+  @extend .bsh1;
+  border-radius: 25px;
+  position: absolute;
+  background: #fff;
+  z-index: 10;
+  width: 100%;
+  left: 0;
+  top: 100%;
+  box-sizing: border-box;
+  padding: 2em 2em 1em;
+
+  @media #{$mobile} {
+    padding: 1em 1em 1em;
+  }
+  &__row {
+    &.iButtons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding-top: 0.5em;
+    }
+  }
+  &__brandsgrid {
+    font-size: 24px;
+    @extend .gridCont;
+    justify-content: center;
+    margin-left: -1em;
+  }
+  &__brandsgriditem {
+    @extend .gridItem;
+    padding-left: 1em;
+    padding-bottom: 1em;
+    position: relative;
+    width: (100%/4);
+    @media #{$mobile} {
+      width: (100%/2);
+    }
+    @media #{$tiny} {
+      width: (100%/1);
+    }
+    & > label {
+      display: block;
+      text-transform: uppercase;
+      font-size: 1rem;
+      input[type="checkbox"] {
+        display: none;
+        & + span {
+          cursor: pointer;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 70px;
+          box-sizing: border-box;
+          border-radius: 25px;
+          transition: 0.3s all ease;
+          box-shadow: 0 0 0 1px #8e8e93;
+          background-position: 50% 50%;
+          background-repeat: no-repeat;
+          background-size: auto 80%;
+          @media #{$mobile} {
+            background-size: auto 60%;
+          }
+          &.amelie {
+            background-image: url("#{$basePath}/cssimg/brands/amelie.png");
+          }
+          &.leto {
+            background-image: url("#{$basePath}/cssimg/brands/leto.png");
+          }
+          &.moreslav {
+            background-image: url("#{$basePath}/cssimg/brands/moreslav.png");
+          }
+          &.hutorok {
+            background-image: url("#{$basePath}/cssimg/brands/hutorok.png");
+          }
+        }
+        &:checked {
+          & + span {
+            box-shadow: 0 0 0 3px $green;
+          }
+        }
+      }
+    }
+  }
+  &__catsgrid {
+    font-size: 24px;
+    @extend .gridCont;
+    margin-left: -1em;
+    justify-content: center;
+  }
+  &__catsgriditem {
+    @extend .gridItem;
+    padding-left: 1em;
+    padding-bottom: 1em;
+    position: relative;
+    width: (100%/5);
+    @media #{$tablet} {
+      width: (100%/3);
+    }
+    @media #{$mobile} {
+      width: (100%/2);
+    }
+    @media #{$tiny} {
+      width: (100%/1);
+    }
+    & > label {
+      display: block;
+      font-size: 18px;
+      input[type="checkbox"] {
+        display: none;
+        & + span {
+          display: flex;
+          cursor: pointer;
+          width: 100%;
+          justify-content: center;
+          align-items: center;
+          box-sizing: border-box;
+          border-radius: 25px;
+          transition: 0.3s all ease;
+          box-shadow: 0 0 0 1px #8e8e93;
+          height: 70px;
+          font-weight: 700;
+          color: #8e8e93;
+        }
+        &:checked {
+          & + span {
+            box-shadow: 0 0 0 3px $green;
+            color: $green;
+          }
+        }
+      }
+    }
+  }
+  button {
+    border: none;
+    background: transparent;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin: 0 1em;
+    padding: 0 0 2px 0;
+    border-bottom: 2px solid transparent;
+    transition: 0.3s all ease;
+    margin-bottom: 1em;
+    @media #{$tiny} {
+      display: block;
+    }
+    &.submit {
+      color: $orange;
+      &:hover {
+        border-bottom-color: $orange;
+      }
+      &:disabled {
+        color: #bbb;
+        border-bottom-color: transparent;
+        cursor: default;
+      }
+    }
+    &.reset {
+      color: #8e8e93;
+      &:hover {
+        border-bottom-color: #8e8e93;
+      }
+    }
+  }
+}
+
+.button {
+  white-space: nowrap;
+  @include fluid_typo_auto(768, 20, 16);
+}
+
+.nothingFound {
+  text-align: center;
+  color: $orange;
+  font-size: 2em;
+  padding: 1em;
+}
+
+.category {
+  font-size: 0.8em;
+  color: #999;
+}

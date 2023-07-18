@@ -1,0 +1,101 @@
+@import "../../scss/vars.scss";
+
+//////////////////////////////////////////////////////////////////////////////
+// Site Header
+//////////////////////////////////////////////////////////////////////////////
+.siteHeader {
+  $toggle: $mobile;
+  $break: "screen and (max-width: 700px)";
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: (24em/16);
+  position: relative;
+  @media #{$toggle} {
+    display: block;
+  }
+  @media #{$break} {
+    padding-top: 80px;
+  }
+  &__dixylogo {
+    width: 63px;
+    height: 63px;
+    position: absolute;
+    top: (24em/16);
+    left: 0;
+    background: url("#{$basePath}/cssimg/header/logo_dixy.svg") 50% 50% no-repeat;
+    background-size: contain;
+    z-index: 10;
+    display: block;
+    text-indent: -9999em;
+    @media #{$break} {
+      left: 50%;
+      margin-left: (-63px/2);
+    }
+  }
+  &__hero {
+    width: (100-(628/1170 * 100%));
+    display: flex;
+    align-items: center;
+    padding-top: 2em;
+    @media #{$toggle} {
+      width: auto;
+    }
+  }
+  &__aside {
+    width: (628/1170 * 100%);
+    display: flex;
+    align-items: center;
+    @media #{$toggle} {
+      width: auto;
+    }
+  }
+  &__visual {
+    display: block;
+    width: 100%;
+    box-sizing: content-box;
+    height: 0;
+    padding-bottom: (423/628 * 100%);
+    background: url("#{$basePath}/cssimg/header/visual.png") 50% 50% no-repeat;
+    background-size: contain;
+  }
+}
+
+//////////////////////////////////////////////////////////////////////////////
+// Site Hero - in header
+//////////////////////////////////////////////////////////////////////////////
+.siteHero {
+  $l_w: 459;
+  $l_h: 217;
+  position: relative;
+  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 30px;
+  &__logo {
+    width: 100%;
+    max-width: ($l_w * 1px);
+    display: block;
+    &::before {
+      content: "";
+      box-sizing: content-box;
+      height: 0;
+      display: block;
+      padding-bottom: ($l_h/$l_w * 100%);
+      background: url("#{$basePath}/cssimg/hero/hero_logo.svg") 50% 50% no-repeat;
+      background-size: contain;
+    }
+  }
+  &__text {
+    padding-top: 1em;
+    color: $green;
+    line-height: (30/16);
+    font-weight: 700;
+    @media #{$mobile} {
+      font-size: 14px;
+      line-height: (25/14);
+    }
+  }
+}

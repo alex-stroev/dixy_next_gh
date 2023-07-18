@@ -1,0 +1,62 @@
+@import "normalize.8.0.1.partial";
+@import "vars.scss";
+
+//////////////////////////////////////////////////////////////////////////////
+//
+//////////////////////////////////////////////////////////////////////////////
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  @include ff_main;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+body {
+  // background: linear-gradient(180deg, #f2f6fa 0%, rgba(242, 246, 250, 0) 100%);
+}
+
+*:focus {
+  outline: none;
+}
+
+::selection {
+  background: darken($orange, 0%);
+  color: #fff;
+}
+
+//////////////////////////////////////////////////////////////////////////////
+//  Typo
+//////////////////////////////////////////////////////////////////////////////
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+.nobr {
+  white-space: nowrap;
+}
+//////////////////////////////////////////////////////////////////////////////
+//  Swiper - brands
+//////////////////////////////////////////////////////////////////////////////
+.brandsSwiper {
+  .swiper-pagination-bullet {
+    background-color: $orange;
+    border-radius: 4px;
+    opacity: 1;
+    transition: 0.3s all ease;
+  }
+  .swiper-pagination-bullet-active {
+    width: 40px;
+  }
+}

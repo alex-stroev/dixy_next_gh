@@ -1,0 +1,27 @@
+@import "../../../scss/vars.scss";
+
+.response {
+  max-height: 210px;
+  overflow-y: auto;
+
+  padding: 0 1.5em;
+
+  &__name {
+    padding-bottom: 0.5em;
+  }
+
+  &__rating {
+    display: flex;
+    padding-bottom: 0.5em;
+
+    span {
+      display: inline-block;
+      margin-right: 0.5em;
+      bottom: 0.5em;
+    }
+  }
+
+  &__text {
+    color: #444;
+  }
+}

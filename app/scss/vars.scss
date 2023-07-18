@@ -1,0 +1,196 @@
+//////////////////////////////////////////////////////////////////////////////
+//  MQ
+//////////////////////////////////////////////////////////////////////////////
+$tablet: "screen and (max-width: 1024px)";
+$mobile: "screen and (max-width: 768px)";
+$brands_break: "screen and (max-width: 700px)";
+$tiny: "screen and (max-width: 426px)";
+//////////////////////////////////////////////////////////////////////////////
+//  fontz
+//////////////////////////////////////////////////////////////////////////////
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
+@mixin ff_main {
+  font-family: "Ubuntu", sans-serif;
+}
+
+$basePath: "";
+
+//////////////////////////////////////////////////////////////////////////////
+//  variables
+//////////////////////////////////////////////////////////////////////////////
+$orange: #ff8200;
+$green: #78be20;
+$lightblue: #f2f6fa;
+
+//////////////////////////////////////////////////////////////////////////////
+// Наклонный фон
+//////////////////////////////////////////////////////////////////////////////
+.skewBG {
+  $angle: 2deg;
+  background: $lightblue;
+  position: relative;
+  z-index: 2;
+  .kernel {
+    position: relative;
+    z-index: 3;
+  }
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    background: $lightblue;
+    height: 50%;
+  }
+  &::before {
+    top: 0;
+    transform-origin: right;
+    transform: skewY($angle);
+  }
+  &::after {
+    bottom: 0;
+    transform-origin: right;
+    transform: skewY(-$angle);
+  }
+  &.skewBGreflected {
+    &::before {
+      transform-origin: left;
+      transform: skewY(-$angle);
+    }
+    &::after {
+      transform-origin: left;
+      transform: skewY($angle);
+    }
+  }
+}
+
+.h1 {
+  @include ff_main;
+  color: $green;
+  font-size: 64px;
+  line-height: (73/64);
+  font-weight: 700;
+  text-align: center;
+  @media #{$tablet} {
+    font-size: 56px;
+  }
+  @media #{$mobile} {
+    font-size: 40px;
+  }
+  @media #{$tiny} {
+    font-size: 32px;
+  }
+}
+
+//////////////////////////////////////////////////////////////////////////////
+// Cards box shadow
+//////////////////////////////////////////////////////////////////////////////
+.bsh1 {
+  box-shadow: 0 13px 31px rgba(12, 20, 33, 0.04),
+    0 9.45547px 20.8947px rgba(12, 20, 33, 0.032375),
+    0 6.58125px 13.5141px rgba(12, 20, 33, 0.027),
+    0 4.31641px 8.38574px rgba(12, 20, 33, 0.023125),
+    0 2.6px 5.0375px rgba(12, 20, 33, 0.02),
+    0 1.37109px 2.99707px rgba(12, 20, 33, 0.016875),
+    0 0.56875px 1.79219px rgba(12, 20, 33, 0.013), inset 0 2px 1px #ffffff;
+}
+
+//////////////////////////////////////////////////////////////////////////////
+// Grid extends
+//////////////////////////////////////////////////////////////////////////////
+.gridCont {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.gridItem {
+  box-sizing: border-box;
+  position: relative;
+}
+
+//////////////////////////////////////////////////////////////////////////////
+// Extend - флюидная центровка картинок
+//////////////////////////////////////////////////////////////////////////////
+.centerPic {
+  box-sizing: content-box;
+  height: 0;
+  padding-bottom: 100%;
+  position: relative;
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+  }
+}
+
+//////////////////////////////////////////////////////////////////////////////
+// Fluid typos
+//////////////////////////////////////////////////////////////////////////////
+@function strip-unit($number) {
+  @if type-of($number) == "number" and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}
+
+@mixin fluid_typo($startwidth, $startsize, $endwidth, $endsize) {
+  $startwidth: (strip-unit($startwidth));
+  $startsize: (strip-unit($startsize));
+  $endwidth: (strip-unit($endwidth));
+  $endsize: (strip-unit($endsize));
+
+  @media screen and (max-width: ($startwidth * 1px)) {
+    font-size: ($startsize/$startwidth * 100vw);
+  }
+
+  @media screen and (max-width: ($endwidth * 1px)) {
+    font-size: ($endsize * 1px);
+  }
+}
+
+@mixin fluid_typo_auto($startwidth, $startsize, $endsize) {
+  $startwidth: (strip-unit($startwidth));
+  $startsize: (strip-unit($startsize));
+  $endsize: (strip-unit($endsize));
+  $endwidth: round($startwidth * $endsize/$startsize);
+
+  @media screen and (max-width: ($startwidth * 1px)) {
+    font-size: ($startsize/$startwidth * 100vw);
+  }
+
+  @media screen and (max-width: ($endwidth * 1px)) {
+    font-size: ($endsize * 1px);
+  }
+}
+
+@mixin orangeButton {
+  background: linear-gradient(270deg, #ff8200 0%, #ffa445 50%, #ff8200 100%);
+  box-shadow: inset 0 -4px 8px #db7104, inset 0 4px 5px #ffbb73;
+  color: #fff;
+  text-shadow: 0 1px 0 rgba(95, 40, 0, 0.25);
+  &:hover {
+    background: linear-gradient(270deg, #ff8200 0%, #ffa445 50%, #ff8200 100%);
+    box-shadow: inset -1px -1px 1px rgba(255, 255, 255, 0.15);
+  }
+}
+
+@mixin greenButton {
+  background: linear-gradient(270deg, #78be20 0%, #97d700 50%, #78be20 100%);
+  box-shadow: inset 0px -4px 8px #5fab00, inset 0px 4px 5px #ade629;
+  color: #fff;
+  text-shadow: 0 1px 0 rgba(95, 40, 0, 0.25);
+  &:hover {
+    background: linear-gradient(270deg, #78be20 0%, #97d700 50%, #78be20 100%);
+    // box-shadow: inset 0px -2px 2px #5fab00, inset 0px 4px 5px #ade629;
+    box-shadow: inset -1px -1px 1px rgba(255, 255, 255, 0.15);
+  }
+}

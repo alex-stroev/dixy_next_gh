@@ -1,0 +1,12 @@
+@import "../../../scss/vars.scss";
+.kernel {
+  $spad: 30px;
+  max-width: 1170px + $spad * 2;
+  margin: 0 auto;
+  position: relative;
+  box-sizing: border-box;
+  padding: 0 $spad;
+  @media #{$mobile} {
+    padding: 0 16px;
+  }
+}

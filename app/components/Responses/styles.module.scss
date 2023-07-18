@@ -1,0 +1,152 @@
+@import "../../scss/vars.scss";
+//////////////////////////////////////////////////////////////////////////////
+// Награды
+//////////////////////////////////////////////////////////////////////////////
+.responses {
+  @extend .skewBG;
+  @extend .skewBGreflected;
+  background: $lightblue;
+  padding: 72px 0 96px;
+  .h1 {
+    margin-bottom: 0.5em;
+  }
+  ////////////////////////////////////////////////////////////////////////////
+  //   Scrollbar
+  ////////////////////////////////////////////////////////////////////////////
+  $track: #e3e3e8;
+  $thumb: $green;
+  // Works on Firefox
+  scrollbar-width: thin;
+  scrollbar-color: $thumb $track;
+  // Works on Chrome, Edge, and Safari
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: $track;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: $thumb;
+    border-radius: 2px;
+    border: 3px solid $track;
+  }
+}
+
+.responsesGallery {
+  $toggle: $mobile;
+  display: flex;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  @media #{$toggle} {
+    display: block;
+    padding-top: 50px;
+  }
+  &__carouselWrapper {
+    box-sizing: border-box;
+    width: 80%;
+    border-radius: 25px;
+    background: #fff;
+    padding: 1.5em;
+    padding-bottom: 3em;
+
+    box-shadow: 0px 2px 1px 0px #fff inset,
+      0px 0.5687500238418579px 1.7921874523162842px 0px rgba(12, 20, 33, 0.01),
+      0px 1.37109375px 2.9970703125px 0px rgba(12, 20, 33, 0.02),
+      0px 2.5999999046325684px 5.037499904632568px 0px rgba(12, 20, 33, 0.02),
+      0px 4.31640625px 8.3857421875px 0px rgba(12, 20, 33, 0.02),
+      0px 6.581250190734863px 13.514062881469727px 0px rgba(12, 20, 33, 0.03),
+      0px 9.455469131469727px 20.894725799560547px 0px rgba(12, 20, 33, 0.03),
+      0px 13px 31px 0px rgba(12, 20, 33, 0.04);
+    @media #{$toggle} {
+      width: auto;
+    }
+  }
+  &__control {
+    display: flex;
+    width: 10%;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    // padding: 1em;
+    @media #{$toggle} {
+      width: auto;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+  &__carousel {
+    display: block;
+    font-size: 100px;
+    padding: (70em/100) (65em/100) (60em/100);
+    box-sizing: border-box;
+    background: #fff;
+    border-radius: 25px;
+    @media #{$toggle} {
+      font-size: 30px;
+    }
+  }
+  // &__img{
+  //     max-height: 9999em;
+  // }
+  &__item {
+    display: flex;
+    // align-items: center;
+    max-height: 500px;
+    overflow-y: auto;
+    @media #{$toggle} {
+      max-height: 300px;
+    }
+  }
+  img {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  &__button {
+    @include orangeButton;
+    padding: 0;
+    //
+    font-size: 100px;
+    $s: (70em/100);
+    border-radius: (20em/100);
+    width: $s;
+    height: $s;
+    display: block;
+    cursor: pointer;
+    position: relative;
+    @media #{$toggle} {
+      font-size: 50px;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: (15em/100);
+      height: (26em/100);
+      transform: translateX(-50%) translateY(-50%);
+    }
+    &.iPrev {
+      &::before {
+        background: url("#{$basePath}/cssimg/carousel/prev.svg") 50% 50% no-repeat;
+        background-size: contain;
+      }
+      @media #{$toggle} {
+        transform: translateX(-60%);
+      }
+    }
+    &.iNext {
+      &::before {
+        background: url("#{$basePath}/cssimg/carousel/next.svg") 50% 50% no-repeat;
+        background-size: contain;
+      }
+      @media #{$toggle} {
+        transform: translateX(60%);
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+@import "../../../scss/vars.scss";
+
+.button {
+  transition: 0.3s all ease;
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px;
+  box-sizing: border-box;
+  border-radius: (30em/20);
+  text-transform: uppercase;
+  font-weight: 700;
+  line-height: (23em/20);
+  padding: (24em/20) (48em/20);
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.greenButton {
+  @include greenButton;
+}
+
+.orangeButton {
+  @include orangeButton;
+}
+
+.block {
+  display: block;
+}

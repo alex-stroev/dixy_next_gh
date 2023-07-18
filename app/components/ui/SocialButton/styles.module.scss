@@ -1,0 +1,32 @@
+@import "../../../scss/vars.scss";
+
+.slink {
+  display: block;
+  width: (60em/16);
+  height: (60em/16);
+  background-size: contain;
+  background-position: 50% 50% no-repeat;
+  background-repeat: no-repeat;
+  transition: 0.3s ease all;
+  margin: 0 (12em/16) (12em/16);
+  line-height: 0;
+  text-indent: -9999em;
+  &:hover {
+    opacity: 0.7;
+  }
+  &_vk {
+    background-image: url("#{$basePath}/cssimg/socials/vk.svg");
+  }
+  &_facebook {
+    background-image: url("#{$basePath}/cssimg/socials/fb.svg");
+  }
+  &_ok {
+    background-image: url("#{$basePath}/cssimg/socials/ok.svg");
+  }
+  &_youtube {
+    background-image: url("#{$basePath}/cssimg/socials/yt.svg");
+  }
+  &_instagram {
+    background-image: url("#{$basePath}/cssimg/socials/in.svg");
+  }
+}

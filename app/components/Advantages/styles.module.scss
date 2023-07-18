@@ -1,0 +1,80 @@
+@import "../../scss/vars.scss";
+
+.advantages {
+  @extend .skewBG;
+  padding: 40px 0;
+  margin: 80px 0 0 0;
+  &__header {
+    @extend .h1;
+    padding-bottom: (56em/64);
+  }
+}
+
+.advantagesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px 80px;
+  position: relative;
+  z-index: 2;
+  @media #{$mobile} {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.advantagesCard {
+  text-align: center;
+  &__iconNest {
+    padding-bottom: (3em/2);
+  }
+  &__icon {
+    display: inline-block;
+    font-size: 100px;
+    width: (100em/100);
+    height: (100em/100);
+    background: linear-gradient(135.32deg, #ff8200 5.25%, #ffa445 95.25%);
+    box-shadow: inset 0 -4px 8px #db7104, inset 0 4px 5px #ffbb73;
+    border-radius: (15em/100);
+    position: relative;
+    @media #{$mobile} {
+      font-size: 80px;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      width: 60%;
+      height: 60%;
+      top: 20%;
+      left: 20%;
+      background-size: contain;
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+    }
+    &_i1 {
+      &::before {
+        background-image: url("#{$basePath}/cssimg/advantages/i1.svg");
+      }
+    }
+    &_i2 {
+      &::before {
+        background-image: url("#{$basePath}/cssimg/advantages/i2.svg");
+      }
+    }
+    &_i3 {
+      &::before {
+        background-image: url("#{$basePath}/cssimg/advantages/i3.svg");
+      }
+    }
+  }
+  &__title {
+    font-size: 24px;
+    line-height: (40/24);
+    color: #555;
+    padding-bottom: (1em/2);
+    font-weight: bold;
+  }
+  &__text {
+    $lh: (35/16);
+    color: #9c9ca0;
+    line-height: $lh;
+  }
+}
