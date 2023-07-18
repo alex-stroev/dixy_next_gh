@@ -1,7 +1,7 @@
 import styles from "./styles.module.scss";
 import classNames from "classnames";
 // import Image from "next/image";
-const basePath = ""
+const basePath = "/dixy_next_gh"
 
 const GoodCard = ({ goodItem, forClasses, forCompare }) => {
   return (
