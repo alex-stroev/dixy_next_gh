@@ -5,13 +5,6 @@ $tablet: "screen and (max-width: 1024px)";
 $mobile: "screen and (max-width: 768px)";
 $brands_break: "screen and (max-width: 700px)";
 $tiny: "screen and (max-width: 426px)";
-//////////////////////////////////////////////////////////////////////////////
-//  fontz
-//////////////////////////////////////////////////////////////////////////////
-@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
-@mixin ff_main {
-  font-family: "Ubuntu", sans-serif;
-}
 
 $basePath: "/dixy_next_gh";
 
@@ -66,7 +59,6 @@ $lightblue: #f2f6fa;
 }
 
 .h1 {
-  @include ff_main;
   color: $green;
   font-size: 64px;
   line-height: (73/64);

@@ -24,9 +24,7 @@
   @media #{$toggle} {
     background: transparent;
   }
-  input {
-    @include ff_main;
-  }
+
   &__input,
   &__submit {
     display: table-cell;
