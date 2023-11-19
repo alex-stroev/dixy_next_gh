@@ -49,6 +49,7 @@ const Brands = () => {
                         className="brandsSwiper"
                         pagination={pagination}
                         modules={[Pagination, Navigation]}
+                        grabCursor={true}
                     >
                         {brandsList.map((brand) => (
                             <SwiperSlide
